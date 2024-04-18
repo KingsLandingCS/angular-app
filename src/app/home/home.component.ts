@@ -4,21 +4,70 @@ import { Product, Products } from '../../types';
 import { ProductComponent } from '../components/product/product.component';
 import { CommonModule } from '@angular/common';
 import { PaginatorModule } from 'primeng/paginator';
+import { EditPopupComponent } from '../components/edit-popup/edit-popup.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductComponent, CommonModule, PaginatorModule],
+  imports: [
+    ProductComponent,
+    CommonModule,
+    PaginatorModule,
+    EditPopupComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-  constructor(private productsService: ProductsService) {}
+  product: Product;
+  onConfirmEdit($event: Product) {
+    throw new Error('Method not implemented.');
+  }
+  onConfirmAdd($event: Product) {
+    throw new Error('Method not implemented.');
+  }
+  constructor(private productsService: ProductsService) { }
 
   products: Product[] = [];
 
   totalRecords: number = 0;
   rows: number = 5;
+
+  displayEditPopup: boolean = false;
+  displayAddPopup: boolean = false;
+
+  toggleEditPopup(product: Product) {
+    this.selectedProduct = product;
+    this.displayEditPopup = true;
+  }
+
+  toggleAddPopup() {
+    this.displayAddPopup = true;
+  }
+
+
+  selectedProduct: Product = {
+    id: 0,
+    name: '',
+    price: '',
+    image: '',
+    rating: 0,
+  };
+
+  onConfirmEdit(product: Product) {
+
+    if (!this.selectedProduct.id) {
+      return;
+    }
+
+    this.editProduct(product, this.selectedProduct.id);
+    this.displayEditPopup = false;
+  }
+
+  onConfirmAdd(product: Product) {
+    this.addProduct(product);
+    this.displayAddPopup = false;
+  }
 
   onProductOutput(product: Product) {
     console.log(product, 'Output');
