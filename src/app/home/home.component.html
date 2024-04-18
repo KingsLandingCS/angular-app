@@ -13,8 +13,10 @@
   <div class="row wrap gap-1 space-between">
     <app-product *ngFor="let product of products"
       [product]="product"
-      (productOutput)="onProductOutput($event)"></app-product>
+      (edit)="toggleEditPopup($event)"
+      (delete)="toggleDeletePopup($event)"></app-product>
   </div>
+
 </div>
 
 <!-- Paginator -->
@@ -29,7 +31,7 @@
 <app-edit-popup
   header="Edit Product"
   (confirm)="onConfirmEdit($event)"
-  (display)="displayEditPopup"
+  [(display)]="displayEditPopup"
   [product]="selectedProduct">
 </app-edit-popup>
 
@@ -37,5 +39,5 @@
 <app-edit-popup
   header="Add Product"
   (confirm)="onConfirmAdd($event)"
-  (display)="displayAddPopup">
+  [(display)]="displayAddPopup">
 </app-edit-popup>
