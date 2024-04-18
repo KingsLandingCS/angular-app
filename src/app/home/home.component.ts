@@ -48,6 +48,7 @@ export class HomeComponent {
       .subscribe({
         next: (data) => {
           console.log(data);
+          this.fetchProducts(0, this.rows);
         },
         error: (error) => {
           console.log(error);
@@ -55,12 +56,13 @@ export class HomeComponent {
       });
   }
 
-  deleteProduct(product: Product, id: number) {
+  deleteProduct(id: number) {
     this.productsService
       .deleteProduct(`http://localhost:3000/clothes/${id}`)
       .subscribe({
         next: (data) => {
           console.log(data);
+          this.fetchProducts(0, this.rows);
         },
         error: (error) => {
           console.log(error);
@@ -74,6 +76,7 @@ export class HomeComponent {
       .subscribe({
         next: (data) => {
           console.log(data);
+          this.fetchProducts(0, this.rows);
         },
         error: (error) => {
           console.log(error);
