@@ -3,3 +3,7 @@
   --header-color: #fff;
   --border-color: rgb(230, 230, 230);
 }
+
+input.ng-invalid {
+  border: 1px solid red;
+}
