@@ -17,15 +17,15 @@
       (delete)="toggleDeletePopup($event)"></app-product>
   </div>
 
+  <!-- Paginator -->
+  <p-paginator
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    (onPageChange)="onPageChange($event)"
+    #paginator>
+  </p-paginator>
 </div>
-
-<!-- Paginator -->
-<p-paginator
-  [rows]="rows"
-  [totalRecords]="totalRecords"
-  [rowsPerPageOptions]="[5, 10, 20]"
-  (onPageChange)="onPageChange($event)">
-</p-paginator>
 
 <!-- Edit Product -->
 <app-edit-popup
