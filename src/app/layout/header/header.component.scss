@@ -1,12 +1,22 @@
 .wrapper {
-    height: 80px;
-    width: 100%;
-    border-bottom: 1px solid var(--border-color);
-    padding: 20px 10px;
-    box-sizing: border-box;
+  height: 20vh;
+  width: 100%;
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 10px;
+  box-sizing: border-box;
 
-    .logo {
-        height: 100%;
-        object-fit: cover;
+  a {
+    text-decoration: none;
+    font-weight: 300;
+    color: black;
+
+    &.active {
+      font-weight: 900;
     }
+  }
+
+  .logo {
+    height: 100%;
+    object-fit: cover;
+  }
 }
